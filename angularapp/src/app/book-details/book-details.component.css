@@ -1,0 +1,43 @@
+.book-details-container{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+}
+
+.image-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container mat-card{
+    max-width: 40%;
+}
+
+.content-container{
+
+}
+
+.reviews-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 10px;
+    overflow: auto;
+}
+
+.book-content{
+    text-indent: 10%; 
+    overflow: auto;
+    max-height: 400px; 
+    text-align: justify; 
+    overflow-wrap: break-word;
+    padding-right   : 20px;
+}
+
+.dialog-container{
+    max-height: 80vh;
+    min-height: 80vh;
+    min-width: 70vw;
+    overflow-x: hidden;
+}

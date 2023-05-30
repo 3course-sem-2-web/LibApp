@@ -1,0 +1,25 @@
+<form [formGroup]="newUserForm" (ngSubmit)="onSumbit()" class="example-form">
+  <p class="mat-headline-2">Create new user</p>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>User name</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Role of the user</mat-label>
+          <mat-select formControlName="role" name="role">
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </td>
+    </tr>
+  </table>
+  <button [disabled]="newUserForm.invalid" mat-flat-button color="primary">Create</button>
+</form>
+

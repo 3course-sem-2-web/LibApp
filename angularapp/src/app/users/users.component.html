@@ -1,0 +1,56 @@
+<div class="example-action-buttons">
+    <a mat-raised-button color="primary" routerLink="/newuser">Add user</a>
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+  </div>
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel *ngFor="let u of users$ | async">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{u.username}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{u.role}}
+          <mat-icon [ngSwitch]="u.role">
+            <ng-container *ngSwitchCase="'admin'">shield_person</ng-container>
+            <ng-container *ngSwitchCase="'manager'">support_agent</ng-container>
+            <ng-container *ngSwitchCase="'user'">person</ng-container>
+          </mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <form #formState="ngForm" class="example-button-row">
+          <table >
+            <td>
+              <mat-form-field>
+                <mat-label>First name</mat-label>
+                <input 
+                  required disabled
+                  [(ngModel)]="u.username" name="username" 
+                  matInput>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                <mat-label>User status</mat-label>
+                <mat-select [(ngModel)]="u.role" name="user role">
+                  <mat-option *ngFor="let role of roles" [value]="role">
+                    {{role}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <button mat-raised-button 
+                color="primary" 
+                [disabled]="formState.invalid" 
+                (click)="onSubmitEdit(u)">Edit</button>
+            </td>
+            <td>
+              <button mat-raised-button color="warn" [disabled]="formState.invalid" (click)="onSubmitRemove(u)">Remove</button>
+            </td>
+          </table>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

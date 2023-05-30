@@ -1,0 +1,45 @@
+<div class="dialog-container">
+  
+
+<h2 style="text-align: center;" mat-dialog-title>Details</h2>
+<section class="book-details-container">
+  <div class="image-container">
+    <mat-card class="no-shadow-on-card">
+      <img mat-card-image 
+        style="border-radius: 10px;" 
+        src={{bookDetails?.cover}} 
+        alt="Photo of a Shiba Inu">
+      <div class="mat-h1 " style="text-align: center;">
+        <span  style="white-space:nowrap;"> Rating: {{bookDetails?.rating}}</span>&nbsp;
+        <span style="white-space:nowrap;"> Reviews: {{bookDetails?.reviews?.length}}</span>
+      </div>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card class="no-shadow-on-card content-container">
+      <mat-card-header>
+        <mat-card-title>{{bookDetails?.title}}</mat-card-title>
+        <mat-card-subtitle>{{bookDetails?.author}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p  class="mat-body-1 book-content">
+          {{bookDetails?.content}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+<div class="reviews-container">
+  <mat-card *ngFor="let review of bookDetails?.reviews">
+    <mat-card-header>
+      <mat-card-title>{{review.reviewer}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="mat-body-1">
+        {{review.message}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+</div>

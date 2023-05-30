@@ -1,0 +1,52 @@
+<mat-card  >
+    <mat-card-header>
+      <mat-card-title>Addbook</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <mat-grid-list cols="2" rowHeight="400">
+        <mat-grid-tile>
+          <div class="book_input">
+            <mat-form-field appearance="fill">
+              <mat-label>Title</mat-label>
+              <input [(ngModel)]="form.title" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Genre</mat-label>
+              <input [(ngModel)]="form.genre" matInput>
+            </mat-form-field>
+            <mat-form-field floatLabel="auto">
+              <button mat-icon-button color="primary" matPrefix (click)="f_input.click()">
+                <mat-icon>attach_file</mat-icon>
+              </button>
+              <input
+                [(ngModel)]="coverFilename"
+                (click)="f_input.click()" style="cursor: pointer;"
+                type="text" placeholder="Cover" readonly matInput />
+              <input required
+                type="file" accept="image/*" hidden #f_input 
+                (change)="handleFileInputChange(f_input.files!)"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Author</mat-label>
+              <input [(ngModel)]="form.author" matInput>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="book_input">
+            <mat-form-field appearance="fill">
+              <mat-label>Content</mat-label>
+              <textarea [(ngModel)]="form.content" matInput></textarea>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>      
+    </mat-card-content>
+    <mat-card-actions class="bookscontrol-container">
+      <button mat-raised-button (click)="save()" color="primary" >{{(selectedBook$ | async)!.id == 0 ?  'Add' : 'Update'}}</button>
+      <button mat-raised-button (click)="resetForm()" color="warn">Clear</button>
+    </mat-card-actions>
+</mat-card>
+<br>

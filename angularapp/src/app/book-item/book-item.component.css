@@ -1,0 +1,8 @@
+.example-card{
+    height: 180px;
+}
+
+.bookitem-container button + button{
+    margin-left: 5px;
+}
+

@@ -1,0 +1,30 @@
+
+
+<mat-tab-group 
+    animationDuration="0" 
+    mat-stretch-tabs="false" 
+    mat-align-tabs="start" 
+    class="tabs-container"
+    #tab>
+    <mat-tab label="All">
+        <div *ngIf="( allBooks$ | async ) === undefined; then spinner else booksPage"></div>
+    </mat-tab>
+    <mat-tab label="Recommended">
+        <div *ngIf="recommended == undefined; then spinner else recommendedbooksPage"></div>
+    </mat-tab>
+</mat-tab-group>
+
+<ng-template #booksPage>
+    <app-books-page [books]="(allBooks$ | async)!"></app-books-page>
+</ng-template>
+
+<ng-template #recommendedbooksPage>
+    <app-books-page [books]="recommended"></app-books-page>
+</ng-template>
+
+
+<ng-template #spinner>
+    <div class="spinner-container">
+        <mat-progress-spinner  mode="indeterminate" />
+    </div>
+</ng-template>
