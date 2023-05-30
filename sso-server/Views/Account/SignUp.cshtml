@@ -1,0 +1,26 @@
+﻿@using sso_server.ViewModels;
+@model SignUpViewModel
+
+<form asp-route="Register">
+    <h1>Register</h1>
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-floating mb-3">
+        <input asp-for="Username" type="text"
+               placeholder="..." class="form-control">
+        <label asp-for="Username">Username</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Password" type="password"
+               placeholder="..." class="form-control" autocomplete="off">
+        <label asp-for="Password">Password</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="RetryPassword" type="password"
+               placeholder="..." class="form-control" autocomplete="off">
+        <label asp-for="RetryPassword">Retry Password</label>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-lg btn-dark mt-3">Submit Registration</button>
+    </div>
+</form>
+
