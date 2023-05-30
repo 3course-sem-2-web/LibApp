@@ -1,0 +1,23 @@
+﻿@model sso_server.ViewModels.LoginViewModel;
+
+<form autocomplete="off" asp-route="Login">
+    <h1>Login</h1>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" />
+    <div class="form-floating mb-3">
+        <input asp-for="Username"  type="text" 
+            placeholder="..." class="form-control">
+        <label asp-for="Username">Username</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Password"  type="password" 
+        placeholder="..." class="form-control" autocomplete="off">
+        <label asp-for="Password">Password</label>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-lg btn-dark mt-3">Login</button>
+        <a class="btn btn-lg btn-outline-dark mt-3" asp-action="SignUp">Sign Up</a>
+    </div>
+</form>
+
+
