@@ -1,0 +1,41 @@
+﻿<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Library App</span>
+        <div class="menu-options">
+          <button mat-icon-button routerLink="/home" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+          </button>
+          <button mat-icon-button routerLink="/books" aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>menu_book</mat-icon>
+          </button>
+        </div>
+        <span class="example-spacer"></span>
+        <button *ngIf="!isAuthenticated" (click)="login()" mat-raised-button color="warn" >Login</button>
+        <span class="mat-subtitle-2">{{currentUsername}}</span>
+        <button *ngIf="isAuthenticated" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="currentRole == neededRoleForEditBook" routerLink="/users">
+            <mat-icon>group</mat-icon>
+            <span>Manage users</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+          
+        <!-- <button mat-raised-button color="accent" *ngIf="(this.authService.getIsAuthenticated() | async)">Logout</button> -->
+        <!-- <button mat-mini-fab color="accent" matTooltip="Account" *ngIf="(this.authService.getIsAuthenticated() | async)" aria-label="Go to Your Account">
+            <mat-icon>account_circle</mat-icon>
+        </button> -->
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- <app-books-page></app-books-page> 
+<app-edit-book></app-edit-book> -->
+<div class="main">
+    <router-outlet></router-outlet>
+</div>
+

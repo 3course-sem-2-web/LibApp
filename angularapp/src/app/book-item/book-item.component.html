@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{book.title}}</mat-card-title>
+        <mat-card-subtitle>
+            Rating: {{book.rating}} <br>
+            Reviews: {{book.reviewsNumber}}
+        </mat-card-subtitle>
+        <img *ngIf="this.book.cover?.includes('base64'); else elseBlock" mat-card-md-image style="border-radius: 20px;" [src]="book.cover"  alt="Image of a Shiba Inu">
+        <ng-template #elseBlock>
+            <mat-icon mat-card-md-image>account_circle</mat-icon>
+        </ng-template>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="bookitem-container">
+        <button mat-mini-fab (click)="openDetails()" >
+            <mat-icon>remove_red_eye</mat-icon>
+        </button>
+        <button *ngIf="(this.oidcSecurityService.getUserData() | async).role == neededRoleForEditBook" (click)="setBookToEdit()" mat-mini-fab color="basic">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </mat-card-content>
+</mat-card>
